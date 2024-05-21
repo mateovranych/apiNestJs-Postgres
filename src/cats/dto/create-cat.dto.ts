@@ -15,4 +15,13 @@ export class CreateCatDto {
     @IsOptional()
     breed?: string;
 
+    @IsString()
+    @IsOptional()
+    description?: string;
+
+    @IsString()
+    readonly imagePath?: string;
+
+
+
 }

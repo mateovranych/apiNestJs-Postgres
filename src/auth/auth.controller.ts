@@ -5,16 +5,11 @@ import { loginDto } from './dto/login.dto';
 import { Role } from '../common/enum/rol.enum';
 import { Auth } from './decorators/auth.decorators';
 import { ActiveUser } from 'src/common/enum/decorators.active.user/active-user.decoratorts';
-import { User } from 'src/users/entities/user.entity';
 import { userActiveInterface } from 'src/common/enum/interfaces/user-interface.active';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-interface RequestWithUser extends Request{
-
-    user:{
-        email:string,
-        role:string,        
-    }
-}
+@ApiBearerAuth()
+@ApiTags('autenticacion')
 @Controller('auth')
 export class AuthController {
 
@@ -36,7 +31,7 @@ export class AuthController {
     }
 
     @Get('profile')
-    @Auth(Role.ADMIN)
+    @Auth(Role.USER)
     profile(@ActiveUser() user: userActiveInterface){
         
         console.log(user)

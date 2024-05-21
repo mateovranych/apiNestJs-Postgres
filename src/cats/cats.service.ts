@@ -31,6 +31,7 @@ export class CatsService {
       ...createCatDto,
       breed: breed,
       userEmail:user.email,
+
     })
   }
   async findOne(id: number, user: userActiveInterface) {

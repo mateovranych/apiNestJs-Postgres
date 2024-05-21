@@ -13,7 +13,6 @@ export class Cat {
     @Column()
     age:number;
 
-
     @ManyToOne(()=> Breed ,(breed)=>breed.id, {
         eager:true
     })
@@ -25,6 +24,9 @@ export class Cat {
     @ManyToOne(()=> User)
     @JoinColumn({name:'email', referencedColumnName: 'email',})
     user: User;
+
+    @Column({nullable : true})
+    imagePath: string; // Agrega esta columna para almacenar la ruta de la imagen
 
 
     @Column()
